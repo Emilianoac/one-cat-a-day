@@ -21,10 +21,7 @@
         img.formatDate = formatDate(img.date)
       })
       images.value.sort((a,b) => b.date - a.date)
-
       catOfTheDay.value = images.value.shift()
-
-      console.log(catOfTheDay.value)
     }
     catch(err) {
       console.log(err)
@@ -66,7 +63,7 @@
         <div class="col-lg-4 mt-4" v-for="(img, i) in images">
           <article class="card-gato">
             <RouterLink :to="{ name: 'catProfile', params: {id: img.slug}, meta: {title: img.title} }">
-              <img class="img-fluid" :src="img.url" :title="img.title"/>
+              <img class="img-fluid" :src="img.url" :title="img.title" loading="lazy"/>
               <h4 class="mt-2 fw-bold small">{{ img.title }}</h4>
               <p class="small muted mt-2">{{ img.formatDate }}</p>
             </RouterLink>
